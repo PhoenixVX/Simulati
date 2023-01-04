@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "simulatimod",
+  "version": "${version}",
+  "name": "SimulatiMod",
+  "description": "",
+  "authors": [
+    "Zero_DSRS_VX"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/simulatimod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.zero.simulatimod.SimulatiMod"
+    ],
+    "modmenu": [
+      "me.zero.simulatimod.config.ModMenuIntegration"
+    ],
+    "mm:early_risers": [
+      "me.zero.simulatimod.SimulatiEarlyRiser"
+    ]
+  },
+  "mixins": [
+    "SimulatiMod.mixins.json",
+    "SimulatiModExtras.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.12",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "generator.simulati.customized_world_type": "Customized",
+  "text.autoconfig.simulati.title": "Simulati",
+  "text.autoconfig.simulati.option.noiseSamplers": "Noise Samplers",
+  "text.autoconfig.simulati.option.noiseSamplers.maintainPrecision": "Maintain Precision",
+  "text.autoconfig.simulati.option.noiseSamplers.maintainPrecision.@Tooltip": "Clamp noise sampling to overflow (generating the Farlands)",
+  "text.autoconfig.simulati.option.noiseSamplers.simplexNoiseSampler": "Simplex Noise Sampler",
+  "text.autoconfig.simulati.option.noiseSamplers.simplexNoiseSampler.useVanillaNoiseSampler": "Use Vanilla Noise Sampler",
+  "text.autoconfig.simulati.option.noiseSamplers.perlinNoiseSampler": "Perlin Noise Sampler",
+  "text.autoconfig.simulati.option.noiseSamplers.perlinNoiseSampler.useVanillaNoiseSampler": "Use Vanilla Noise Sampler",
+  "text.autoconfig.simulati.option.world": "World",
+  "text.autoconfig.simulati.option.world.generation": "Generation",
+  "text.autoconfig.simulati.option.world.generation.useVanillaAquiferSampler": "Use Vanilla Aquifer Sampler",
+  "text.autoconfig.simulati.option.world.generation.useVanillaAquiferSampler.@Tooltip": "Vanilla aquifers crash at higher distances.",
+  "text.autoconfig.simulati.option.commands": "Commands",
+  "text.autoconfig.simulati.option.commands.worldBorderCommand": "World Border Command",
+  "text.autoconfig.simulati.option.commands.worldBorderCommand.maximumCenterSize": "Maximum Center Size",
+  "text.autoconfig.simulati.option.commands.worldBorderCommand.maximumSize": "Maximum World Border Size"
+}

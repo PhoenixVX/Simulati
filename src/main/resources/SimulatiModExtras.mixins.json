@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.zero.simulatimod.extramixins",
+  "plugin": "me.zero.simulatimod.SimulatiExtrasMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "dimensions.PlayerEntityMixin",
+    "floats.block.AbstractBlockMixin",
+    "floats.block.BigDripleafBlockMixin",
+    "floats.block.BlockMixin",
+    "floats.block.EnchantingTableBlockMixin",
+    "floats.block.PointedDripstoneBlockMixin",
+    "floats.block.dispenser.BoatDispenserBehaviorMixin",
+    "floats.block.dispenser.DispenserBehaviorMixin",
+    "floats.block.entity.BellBlockEntityMixin",
+    "floats.block.entity.CampfireBlockEntityMixin",
+    "floats.entity.AbstractDecorationEntityMixin",
+    "floats.fluid.FlowableFluidMixin"
+  ],
+  "client": [
+    "floats.render.HeightmapDebugRendererMixin",
+    "floats.render.WorldGenAttemptDebugRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

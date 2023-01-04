@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.zero.simulatimod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "command.WorldBorderCommandMixin",
+    "entity.EntityMixin",
+    "entity.PlayerEntityMixin",
+    "noise.OctavePerlinNoiseSamplerMixin",
+    "noise.PerlinNoiseSamplerMixin",
+    "noise.SimplexNoiseSamplerAccessor",
+    "noise.SimplexNoiseSamplerMixin",
+    "server.MinecraftServerMixin",
+    "server.ServerPlayNetworkHandlerMixin",
+    "world.WorldBorderMixin",
+    "world.WorldBorderPropertiesAccessor",
+    "world.WorldMixin",
+    "world.WorldViewMixin",
+    "world.chunk.AquiferSamplerImplMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
