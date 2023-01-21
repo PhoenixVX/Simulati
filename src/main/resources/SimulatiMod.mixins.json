@@ -16,6 +16,7 @@
     "world.WorldBorderMixin",
     "world.WorldBorderPropertiesAccessor",
     "world.WorldMixin",
+    "world.WorldPresetRegistrarMixin",
     "world.WorldViewMixin",
     "world.chunk.AquiferSamplerImplMixin"
   ],
