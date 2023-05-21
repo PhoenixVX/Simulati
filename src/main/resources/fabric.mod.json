@@ -3,9 +3,12 @@
   "id": "simulati",
   "version": "${version}",
   "name": "SimulatiMod",
-  "description": "",
+  "description": "SimulatiMod is a mod that increases the playable range of the Minecraft world from 30,000,000 to 2,147,483,647.",
   "authors": [
     "Zero_DSRS_VX"
+  ],
+  "contributors": [
+    "Aiko"
   ],
   "contact": {},
   "license": "MIT",
