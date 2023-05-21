@@ -18,11 +18,11 @@ public class WorldMixin {
 
     @ModifyConstant(method = "*", constant = @Constant(intValue = -30000000))
     private static int simulatiMod$modifyConstantHorizontalLimitNegative(int original) {
-        return SimulatiMod.NEG_HORIZONTAL_LIMIT;
+        return SimulatiMod.VANILLA_NEG_HORIZONTAL_LIMIT;
     }
 
     @ModifyConstant(method = "*", constant = @Constant(intValue = 30000000))
     private static int simulatiMod$modifyConstantHorizontalLimitPositive(int original) {
-        return SimulatiMod.POS_HORIZONTAL_LIMIT;
+        return SimulatiMod.VANILLA_POS_HORIZONTAL_LIMIT;
     }
 }

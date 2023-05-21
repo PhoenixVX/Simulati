@@ -7,15 +7,13 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin {
-    double maxClampValue = Double.MAX_VALUE;
-
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = -2.9999999E7))
     public double simulatiMod$modifyConstantTickNegative(double original) {
-        return -maxClampValue;
+        return Double.MIN_VALUE;
     }
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 2.9999999E7))
     public double simulatiMod$modifyConstantTickPositive(double original) {
-        return maxClampValue;
+        return Double.MAX_VALUE;
     }
 }

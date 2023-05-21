@@ -36,14 +36,15 @@ public abstract class AquiferSamplerImplMixin {
     @Final
     private AquiferSampler.Impl.FluidLevel[] waterLevels;
 
+    // Fill aquifers with water to prevent a crash
     @Inject(method = "index", at = @At("HEAD"), cancellable = true)
     private void simulatiMod$cancellableInjectIndex(int x, int y, int z, CallbackInfoReturnable<Integer> cir) {
         if (!SimulatiMod.getConfig().world.generation.useVanillaAquiferSampler) {
-            int i = x - this.startX;
-            int j = y - this.startY;
-            int k = z - this.startZ;
-            int dx = (j * this.sizeZ + k) * this.sizeX + i;
-            cir.setReturnValue(MathHelper.clamp(dx, 0, this.waterLevels.length - 1));
+            int localX = x - this.startX;
+            int localY = y - this.startY;
+            int localZ = z - this.startZ;
+            int index = (localY * this.sizeZ + localZ) * this.sizeX + localX;
+            cir.setReturnValue(MathHelper.clamp(index, 0, this.waterLevels.length - 1));
         }
     }
 }

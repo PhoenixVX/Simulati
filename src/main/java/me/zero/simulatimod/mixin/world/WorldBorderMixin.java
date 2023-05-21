@@ -21,9 +21,7 @@ public class WorldBorderMixin {
     @Shadow
     @Final
     @Mutable
-    public static final WorldBorder.Properties DEFAULT_BORDER =
-            WorldBorderPropertiesAccessor.newProperties(
-                    0.0, 0.0, 0.2, 5.0, 5, 15, Long.MAX_VALUE, 0L, 0.0);
+    public static final WorldBorder.Properties DEFAULT_BORDER = WorldBorderPropertiesAccessor.newProperties(0.0, 0.0, 0.2, 5.0, 5, 15, Long.MAX_VALUE, 0L, 0.0);
 
     @Shadow
     int maxRadius = Integer.MAX_VALUE;
