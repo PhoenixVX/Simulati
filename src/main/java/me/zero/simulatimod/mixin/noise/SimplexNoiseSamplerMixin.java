@@ -13,13 +13,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(SimplexNoiseSampler.class)
 public abstract class SimplexNoiseSamplerMixin {
 
-    @Shadow @Final private static double SKEW_FACTOR_2D;
+    @Shadow
+    @Final
+    private static double SKEW_FACTOR_2D;
 
-    @Shadow @Final private static double UNSKEW_FACTOR_2D;
+    @Shadow
+    @Final
+    private static double UNSKEW_FACTOR_2D;
+    @Shadow
+    @Final
+    private int[] permutation;
 
-    @Shadow protected abstract double grad(int hash, double x, double y, double z, double distance);
-
-    @Shadow @Final private int[] permutation;
+    @Shadow
+    protected abstract double grad(int hash, double x, double y, double z, double distance);
 
     private int map(long input) {
         return this.permutation[(int) (input & 255)];
@@ -35,9 +41,9 @@ public abstract class SimplexNoiseSamplerMixin {
             double d = (x + y) * SKEW_FACTOR_2D;
             long i = MathHelper.lfloor(x + d);
             long j = MathHelper.lfloor(y + d);
-            double e = (double)(i + j) * UNSKEW_FACTOR_2D;
-            double f = (double)i - e;
-            double g = (double)j - e;
+            double e = (double) (i + j) * UNSKEW_FACTOR_2D;
+            double f = (double) i - e;
+            double g = (double) j - e;
             double h = x - f;
             double k = y - g;
             byte l;
@@ -50,8 +56,8 @@ public abstract class SimplexNoiseSamplerMixin {
                 m = 1;
             }
 
-            double n = h - (double)l + UNSKEW_FACTOR_2D;
-            double o = k - (double)m + UNSKEW_FACTOR_2D;
+            double n = h - (double) l + UNSKEW_FACTOR_2D;
+            double o = k - (double) m + UNSKEW_FACTOR_2D;
             double p = h - 1.0 + 2.0 * UNSKEW_FACTOR_2D;
             double q = k - 1.0 + 2.0 * UNSKEW_FACTOR_2D;
             int r = (int) (i & 255);

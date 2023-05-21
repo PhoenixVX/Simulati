@@ -8,12 +8,22 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(Entity.class)
 public class EntityMixin {
     @ModifyConstant(method = "updatePosition", constant = @Constant(doubleValue = -3.0E7))
-    private double simulatiMod$modifyConstantUpdatePositionNegative (double original) {
+    private double simulatiMod$modifyConstantUpdatePositionNegative(double original) {
         return Long.MIN_VALUE;
     }
 
     @ModifyConstant(method = "updatePosition", constant = @Constant(doubleValue = 3.0E7))
-    private double simulatiMod$modifyConstantUpdatePositionPositive (double original) {
+    private double simulatiMod$modifyConstantUpdatePositionPositive(double original) {
+        return Long.MAX_VALUE;
+    }
+
+    @ModifyConstant(method = "readNbt", constant = @Constant(doubleValue = -3.0000512E7))
+    private double simulatiMod$modifyReadNbtNegative(double original) {
+        return Long.MIN_VALUE;
+    }
+
+    @ModifyConstant(method = "readNbt", constant = @Constant(doubleValue = 3.0000512E7))
+    private double simulatiMod$modifyReadNbtPositive(double original) {
         return Long.MAX_VALUE;
     }
 }

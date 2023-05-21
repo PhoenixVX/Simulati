@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.0-SNAPSHOT'
+    id 'fabric-loom' version '1.1-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -39,8 +39,6 @@ dependencies {
     modApi ("com.terraformersmc:modmenu:${project.modmenu_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-
-    implementation include("com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}")
 }
 
 processResources {

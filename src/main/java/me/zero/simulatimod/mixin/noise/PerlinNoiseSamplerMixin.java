@@ -12,13 +12,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PerlinNoiseSampler.class)
 public abstract class PerlinNoiseSamplerMixin {
-    @Shadow @Final public double originX;
+    @Shadow
+    @Final
+    public double originX;
 
-    @Shadow @Final public double originY;
+    @Shadow
+    @Final
+    public double originY;
 
-    @Shadow @Final public double originZ;
+    @Shadow
+    @Final
+    public double originZ;
 
-    @Shadow @Final private byte[] permutation;
+    @Shadow
+    @Final
+    private byte[] permutation;
 
     @Shadow
     private static double grad(int hash, double x, double y, double z) {
@@ -27,7 +35,7 @@ public abstract class PerlinNoiseSamplerMixin {
 
     // Cancellable injects
     @Inject(method = "sample(DDDDD)D", at = @At("HEAD"), cancellable = true)
-    public void simulatiMod$cancellableInjectSample (double x, double y, double z, double yScale, double yMax, CallbackInfoReturnable<Double> cir) {
+    public void simulatiMod$cancellableInjectSample(double x, double y, double z, double yScale, double yMax, CallbackInfoReturnable<Double> cir) {
         // Stop vanilla perlin noise sampling
         if (!SimulatiMod.getConfig().noiseSamplers.perlinNoiseSampler.useVanillaNoiseSampler) {
             cir.cancel();
@@ -60,7 +68,7 @@ public abstract class PerlinNoiseSamplerMixin {
     }
 
     @Inject(method = "sampleDerivative(DDD[D)D", at = @At("HEAD"), cancellable = true)
-    public void simulatiMod$cancellableInjectSampleDerivative (double x, double y, double z, double[] ds, CallbackInfoReturnable<Double> cir) {
+    public void simulatiMod$cancellableInjectSampleDerivative(double x, double y, double z, double[] ds, CallbackInfoReturnable<Double> cir) {
         // Stop vanilla perlin noise sampling for derivatives
         if (!SimulatiMod.getConfig().noiseSamplers.perlinNoiseSampler.useVanillaNoiseSampler) {
             cir.cancel();

@@ -44,7 +44,7 @@ public class ModConfig implements ConfigData {
 
         public static class Generation {
             @ConfigEntry.Gui.Tooltip
-            public boolean useVanillaAquiferSampler = true;
+            public boolean useVanillaAquiferSampler = false;
         }
     }
 
@@ -59,6 +59,12 @@ public class ModConfig implements ConfigData {
     }
 
     public static class Extras {
+        @ConfigEntry.Gui.Excluded
         public boolean fixDoubleFloatCasts = true;
+
+        public boolean enableFullBright = false;
+
+        @ConfigEntry.Gui.Excluded
+        public boolean disableLightUpdates = false;
     }
 }

@@ -13,12 +13,13 @@
     "noise.SimplexNoiseSamplerMixin",
     "server.MinecraftServerMixin",
     "server.ServerPlayNetworkHandlerMixin",
+    "world.BlockRenderViewMixin",
     "world.WorldBorderMixin",
     "world.WorldBorderPropertiesAccessor",
     "world.WorldMixin",
-    "world.WorldPresetRegistrarMixin",
     "world.WorldViewMixin",
-    "world.chunk.AquiferSamplerImplMixin"
+    "world.chunk.AquiferSamplerImplMixin",
+    "world.entity.SectionedEntityCacheMixin"
   ],
   "client": [
   ],

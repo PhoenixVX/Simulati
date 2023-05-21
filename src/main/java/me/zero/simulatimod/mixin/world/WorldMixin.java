@@ -1,5 +1,6 @@
 package me.zero.simulatimod.mixin.world;
 
+import me.zero.simulatimod.SimulatiMod;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,12 +17,12 @@ public class WorldMixin {
     public static int HORIZONTAL_LIMIT = Integer.MAX_VALUE;
 
     @ModifyConstant(method = "*", constant = @Constant(intValue = -30000000))
-    private static int simulatiMod$modifyConstantHorizontalLimitNegative (int original) {
-        return -HORIZONTAL_LIMIT;
+    private static int simulatiMod$modifyConstantHorizontalLimitNegative(int original) {
+        return SimulatiMod.NEG_HORIZONTAL_LIMIT;
     }
 
     @ModifyConstant(method = "*", constant = @Constant(intValue = 30000000))
-    private static int simulatiMod$modifyConstantHorizontalLimitPositive (int original) {
-        return HORIZONTAL_LIMIT;
+    private static int simulatiMod$modifyConstantHorizontalLimitPositive(int original) {
+        return SimulatiMod.POS_HORIZONTAL_LIMIT;
     }
 }

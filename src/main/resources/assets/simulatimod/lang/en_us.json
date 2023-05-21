@@ -1,9 +1,8 @@
 {
-  "generator.simulati.customized_world_type": "Customized",
   "text.autoconfig.simulati.title": "Simulati",
   "text.autoconfig.simulati.option.noiseSamplers": "Noise Samplers",
   "text.autoconfig.simulati.option.noiseSamplers.maintainPrecision": "Maintain Precision",
-  "text.autoconfig.simulati.option.noiseSamplers.maintainPrecision.@Tooltip": "Clamp noise sampling to overflow (generating the Farlands)",
+  "text.autoconfig.simulati.option.noiseSamplers.maintainPrecision.@Tooltip": "Clamp noise sampling to not overflow (Disable for Farlands)",
   "text.autoconfig.simulati.option.noiseSamplers.simplexNoiseSampler": "Simplex Noise Sampler",
   "text.autoconfig.simulati.option.noiseSamplers.simplexNoiseSampler.useVanillaNoiseSampler": "Use Vanilla Noise Sampler",
   "text.autoconfig.simulati.option.noiseSamplers.perlinNoiseSampler": "Perlin Noise Sampler",
@@ -15,5 +14,9 @@
   "text.autoconfig.simulati.option.commands": "Commands",
   "text.autoconfig.simulati.option.commands.worldBorderCommand": "World Border Command",
   "text.autoconfig.simulati.option.commands.worldBorderCommand.maximumCenterSize": "Maximum Center Size",
-  "text.autoconfig.simulati.option.commands.worldBorderCommand.maximumSize": "Maximum World Border Size"
+  "text.autoconfig.simulati.option.commands.worldBorderCommand.maximumSize": "Maximum World Border Size",
+  "text.autoconfig.simulati.option.extras": "Extras",
+  "text.autoconfig.simulati.option.extras.fixDoubleFloatCasts": "Fix double-float casts",
+  "text.autoconfig.simulati.option.extras.enableFullBright": "Enable fullbright",
+  "text.autoconfig.simulati.option.extras.disableLightUpdates": "Disable light updates"
 }

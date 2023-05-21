@@ -10,12 +10,12 @@ public class PlayerEntityMixin {
     double maxClampValue = Double.MAX_VALUE;
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = -2.9999999E7))
-    public double simulatiMod$modifyConstantTickNegative (double original) {
+    public double simulatiMod$modifyConstantTickNegative(double original) {
         return -maxClampValue;
     }
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 2.9999999E7))
-    public double simulatiMod$modifyConstantTickPositive (double original) {
+    public double simulatiMod$modifyConstantTickPositive(double original) {
         return maxClampValue;
     }
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "simulatimod",
+  "id": "simulati",
   "version": "${version}",
   "name": "SimulatiMod",
   "description": "",
@@ -17,9 +17,6 @@
     ],
     "modmenu": [
       "me.zero.simulatimod.config.ModMenuIntegration"
-    ],
-    "mm:early_risers": [
-      "me.zero.simulatimod.SimulatiEarlyRiser"
     ]
   },
   "mixins": [
@@ -29,6 +26,6 @@
   "depends": {
     "fabricloader": ">=0.14.12",
     "fabric": "*",
-    "minecraft": "1.19.3"
+    "minecraft": "1.19.4"
   }
 }
