@@ -39,10 +39,7 @@ public class SectionedEntityCacheMixin {
     }
 
     private Object2ObjectFunction<ChunkPos, EntityTrackingStatus> simulatiMod$longFunctionToObjectFunction(Long2ObjectFunction<EntityTrackingStatus> long2ObjectFunction) {
-        return key -> {
-            ChunkPos chunkPos = new ChunkPos((long) key);
-            return long2ObjectFunction.apply(chunkPos.toLong());
-        };
+        return key -> long2ObjectFunction.apply((long) key);
     }
 
     @Inject(method = "forEachInBox", at = @At("HEAD"), cancellable = true)
