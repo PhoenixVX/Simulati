@@ -33,7 +33,7 @@ public abstract class SimplexNoiseSamplerMixin {
 
     // Cancellable injects
     @Inject(method = "sample(DD)D", at = @At("HEAD"), cancellable = true)
-    private void simulatiMod$cancellableInjectSample(double x, double y, CallbackInfoReturnable<Double> cir) {
+    private void cancellableInjectSample(double x, double y, CallbackInfoReturnable<Double> cir) {
         // Stop vanilla simplex noise sampling
         if (!SimulatiMod.getConfig().noiseSamplers.simplexNoiseSampler.useVanillaNoiseSampler) {
             cir.cancel();
@@ -73,7 +73,7 @@ public abstract class SimplexNoiseSamplerMixin {
     }
 
     @Inject(method = "sample(DDD)D", at = @At("HEAD"), cancellable = true)
-    public void simulatiMod$cancellableInjectSample(double x, double y, double z, CallbackInfoReturnable<Double> cir) {
+    public void cancellableInjectSample(double x, double y, double z, CallbackInfoReturnable<Double> cir) {
         // Stop vanilla simplex noise sampling
         if (!SimulatiMod.getConfig().noiseSamplers.simplexNoiseSampler.useVanillaNoiseSampler) {
             cir.cancel();

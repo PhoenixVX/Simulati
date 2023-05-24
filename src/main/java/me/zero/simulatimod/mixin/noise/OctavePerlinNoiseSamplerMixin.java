@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(OctavePerlinNoiseSampler.class)
 public class OctavePerlinNoiseSamplerMixin {
     @Inject(method = "maintainPrecision", at = @At("HEAD"), cancellable = true)
-    private static void simulatiMod$cancellableInjectMaintainPrecision(double value, CallbackInfoReturnable<Double> cir) {
+    private static void cancellableInjectMaintainPrecision(double value, CallbackInfoReturnable<Double> cir) {
         if (!SimulatiMod.getConfig().noiseSamplers.maintainPrecision) {
             cir.setReturnValue(value);
         }

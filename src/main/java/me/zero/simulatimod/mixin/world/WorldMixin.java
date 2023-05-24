@@ -17,12 +17,12 @@ public class WorldMixin {
     public static int HORIZONTAL_LIMIT = Integer.MAX_VALUE;
 
     @ModifyConstant(method = "*", constant = @Constant(intValue = -30000000))
-    private static int simulatiMod$modifyConstantHorizontalLimitNegative(int original) {
+    private static int modifyConstantHorizontalLimitNegative(int original) {
         return SimulatiMod.VANILLA_NEG_HORIZONTAL_LIMIT;
     }
 
     @ModifyConstant(method = "*", constant = @Constant(intValue = 30000000))
-    private static int simulatiMod$modifyConstantHorizontalLimitPositive(int original) {
+    private static int modifyConstantHorizontalLimitPositive(int original) {
         return SimulatiMod.VANILLA_POS_HORIZONTAL_LIMIT;
     }
 }

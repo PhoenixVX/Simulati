@@ -26,24 +26,24 @@ import java.util.stream.StreamSupport;
 // TODO: Fix this causing entities to not be hittable
 @Mixin(SectionedEntityCache.class)
 public class SectionedEntityCacheMixin {
-    private final Object2ObjectMap<ChunkSectionPos, EntityTrackingSection<?>> simulatiMod$trackingSections = new Object2ObjectOpenHashMap<>();
-    private final ObjectSortedSet<ChunkSectionPos> simulatiMod$trackedPositions = new ObjectAVLTreeSet<>();
+    private final Object2ObjectMap<ChunkSectionPos, EntityTrackingSection<?>> trackingSections = new Object2ObjectOpenHashMap<>();
+    private final ObjectSortedSet<ChunkSectionPos> trackedPositions = new ObjectAVLTreeSet<>();
     @Shadow
     @Final
     private Class<? extends EntityLike> entityClass;
-    private Object2ObjectFunction<ChunkPos, EntityTrackingStatus> simulatiMod$posToStatus;
+    private Object2ObjectFunction<ChunkPos, EntityTrackingStatus> posToStatus;
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    public void simulatiMod$constructorInjectSectionedEntityCache(Class<EntityLike> entityClass, Long2ObjectFunction<EntityTrackingStatus> chunkStatusDiscriminator, CallbackInfo ci) {
-        this.simulatiMod$posToStatus = simulatiMod$longFunctionToObjectFunction(chunkStatusDiscriminator);
+    public void constructorInjectSectionedEntityCache(Class<EntityLike> entityClass, Long2ObjectFunction<EntityTrackingStatus> chunkStatusDiscriminator, CallbackInfo ci) {
+        this.posToStatus = longFunctionToObjectFunction(chunkStatusDiscriminator);
     }
 
-    private Object2ObjectFunction<ChunkPos, EntityTrackingStatus> simulatiMod$longFunctionToObjectFunction(Long2ObjectFunction<EntityTrackingStatus> long2ObjectFunction) {
+    private Object2ObjectFunction<ChunkPos, EntityTrackingStatus> longFunctionToObjectFunction(Long2ObjectFunction<EntityTrackingStatus> long2ObjectFunction) {
         return key -> long2ObjectFunction.apply((long) key);
     }
 
     @Inject(method = "forEachInBox", at = @At("HEAD"), cancellable = true)
-    public void simulatiMod$forEachInBoxCancellableInject(Box box, LazyIterationConsumer<EntityTrackingSection<?>> consumer, CallbackInfo ci) {
+    public void forEachInBoxCancellableInject(Box box, LazyIterationConsumer<EntityTrackingSection<?>> consumer, CallbackInfo ci) {
         ci.cancel();
         int minX = ChunkSectionPos.getSectionCoord(box.minX - 2.0);
         int minY = ChunkSectionPos.getSectionCoord(box.minY - 4.0);
@@ -55,10 +55,10 @@ public class SectionedEntityCacheMixin {
             ChunkSectionPos from = ChunkSectionPos.from(x, 0, 0);
             ChunkSectionPos to = ChunkSectionPos.from(x, -1, -1);
             // r + 1L
-            for (ChunkSectionPos chunkSection : this.simulatiMod$trackedPositions.subSet(to, from)) {
+            for (ChunkSectionPos chunkSection : this.trackedPositions.subSet(to, from)) {
                 int sectionY = chunkSection.getSectionY();
                 int sectionZ = chunkSection.getSectionZ();
-                EntityTrackingSection<?> entityTrackingSection = this.simulatiMod$trackingSections.get(chunkSection);
+                EntityTrackingSection<?> entityTrackingSection = this.trackingSections.get(chunkSection);
                 if (sectionY < minY || sectionY > maxY || sectionZ < minZ || sectionZ > maxZ || (entityTrackingSection) == null || entityTrackingSection.isEmpty() || !entityTrackingSection.getStatus().shouldTrack() || !consumer.accept(entityTrackingSection).shouldAbort())
                     continue;
                 return;
@@ -66,10 +66,10 @@ public class SectionedEntityCacheMixin {
         }
     }
 
-    public Stream<ChunkSectionPos> simulatiMod$getSections(ChunkPos chunkPos) {
+    public Stream<ChunkSectionPos> getSections(ChunkPos chunkPos) {
         int chunkX = chunkPos.x;
         int chunkZ = chunkPos.z;
-        ObjectSortedSet<ChunkSectionPos> chunkSectionSortedSet = this.simulatiMod$getSections(chunkX, chunkZ);
+        ObjectSortedSet<ChunkSectionPos> chunkSectionSortedSet = this.getSections(chunkX, chunkZ);
         if (chunkSectionSortedSet.isEmpty()) {
             return Stream.empty();
         }
@@ -77,37 +77,37 @@ public class SectionedEntityCacheMixin {
         return StreamSupport.stream(Spliterators.spliteratorUnknownSize(chunkSectionIterator, Spliterator.ORDERED | Spliterator.DISTINCT | Spliterator.SORTED | Spliterator.NONNULL | Spliterator.IMMUTABLE), false);
     }
 
-    private ObjectSortedSet<ChunkSectionPos> simulatiMod$getSections(int chunkX, int chunkZ) {
+    private ObjectSortedSet<ChunkSectionPos> getSections(int chunkX, int chunkZ) {
         ChunkSectionPos from = ChunkSectionPos.from(chunkX, 0, chunkZ);
         ChunkSectionPos to = ChunkSectionPos.from(chunkX, -1, chunkZ);
         // to + 1L
-        return this.simulatiMod$trackedPositions.subSet(from, to);
+        return this.trackedPositions.subSet(from, to);
     }
 
-    public void simulatiMod$removeSection(ChunkSectionPos sectionPos) {
-        this.simulatiMod$trackingSections.remove(sectionPos);
-        this.simulatiMod$trackedPositions.remove(sectionPos);
+    public void removeSection(ChunkSectionPos sectionPos) {
+        this.trackingSections.remove(sectionPos);
+        this.trackedPositions.remove(sectionPos);
     }
 
-    public ObjectSet<ChunkPos> simulatiMod$getChunkPositions() {
+    public ObjectSet<ChunkPos> getChunkPositions() {
         ObjectOpenHashSet<ChunkPos> chunkPositions = new ObjectOpenHashSet<>();
-        this.simulatiMod$trackingSections.keySet().forEach(sectionPos -> chunkPositions.add(new ChunkPos(sectionPos.getSectionX(), sectionPos.getSectionZ())));
+        this.trackingSections.keySet().forEach(sectionPos -> chunkPositions.add(new ChunkPos(sectionPos.getSectionX(), sectionPos.getSectionZ())));
         return chunkPositions;
     }
 
-    public EntityTrackingSection<?> simulatiMod$getTrackingSection(ChunkSectionPos sectionPos) {
-        return this.simulatiMod$trackingSections.computeIfAbsent(sectionPos, this::simulatiMod$addSection);
+    public EntityTrackingSection<?> getTrackingSection(ChunkSectionPos sectionPos) {
+        return this.trackingSections.computeIfAbsent(sectionPos, this::addSection);
     }
 
     @Nullable
-    public EntityTrackingSection<?> simulatiMod$findTrackingSection(ChunkSectionPos sectionPos) {
-        return this.simulatiMod$trackingSections.get(sectionPos);
+    public EntityTrackingSection<?> findTrackingSection(ChunkSectionPos sectionPos) {
+        return this.trackingSections.get(sectionPos);
     }
 
-    private EntityTrackingSection<? extends EntityLike> simulatiMod$addSection(ChunkSectionPos sectionPos) {
+    private EntityTrackingSection<? extends EntityLike> addSection(ChunkSectionPos sectionPos) {
         ChunkPos statusPos = new ChunkPos(sectionPos.getSectionX(), sectionPos.getSectionZ());
-        EntityTrackingStatus entityTrackingStatus = this.simulatiMod$posToStatus.get(statusPos);
-        this.simulatiMod$trackedPositions.add(sectionPos);
+        EntityTrackingStatus entityTrackingStatus = this.posToStatus.get(statusPos);
+        this.trackedPositions.add(sectionPos);
         return new EntityTrackingSection<>(this.entityClass, entityTrackingStatus);
     }
 }

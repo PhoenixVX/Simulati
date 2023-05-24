@@ -13,14 +13,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BlockRenderView.class)
 public interface BlockRenderViewMixin extends BlockView {
     @Inject(method = "getLightLevel", at = @At("HEAD"), cancellable = true)
-    default void simulatiMod$getLightLevelCancellableInject(LightType type, BlockPos pos, CallbackInfoReturnable<Integer> cir) {
+    default void getLightLevelCancellableInject(LightType type, BlockPos pos, CallbackInfoReturnable<Integer> cir) {
         if (SimulatiMod.getConfig().extras.enableFullBright) {
             cir.setReturnValue(15);
         }
     }
 
     @Inject(method = "getBaseLightLevel", at = @At("HEAD"), cancellable = true)
-    default void simulatiMod$getBaseLightLevelCancellableInject(BlockPos pos, int ambientDarkness, CallbackInfoReturnable<Integer> cir) {
+    default void getBaseLightLevelCancellableInject(BlockPos pos, int ambientDarkness, CallbackInfoReturnable<Integer> cir) {
         if (SimulatiMod.getConfig().extras.enableFullBright) {
             cir.setReturnValue(15);
         }

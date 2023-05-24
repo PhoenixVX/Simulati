@@ -9,12 +9,12 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(WorldView.class)
 public interface WorldViewMixin {
     @ModifyConstant(method = "getLightLevel(Lnet/minecraft/util/math/BlockPos;I)I", constant = @Constant(intValue = -30000000))
-    private int simulatiMod$modifyConstantGetLightLevelNegative(int original) {
+    private int modifyConstantGetLightLevelNegative(int original) {
         return SimulatiMod.VANILLA_NEG_HORIZONTAL_LIMIT;
     }
 
     @ModifyConstant(method = "getLightLevel(Lnet/minecraft/util/math/BlockPos;I)I", constant = @Constant(intValue = 30000000))
-    private int simulatiMod$modifyConstantGetLightLevelPositive(int original) {
+    private int modifyConstantGetLightLevelPositive(int original) {
         return SimulatiMod.VANILLA_POS_HORIZONTAL_LIMIT;
     }
 }

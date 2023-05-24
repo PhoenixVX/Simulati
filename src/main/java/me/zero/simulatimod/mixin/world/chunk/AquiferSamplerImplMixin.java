@@ -38,7 +38,7 @@ public abstract class AquiferSamplerImplMixin {
 
     // Fill aquifers with water to prevent a crash
     @Inject(method = "index", at = @At("HEAD"), cancellable = true)
-    private void simulatiMod$cancellableInjectIndex(int x, int y, int z, CallbackInfoReturnable<Integer> cir) {
+    private void cancellableInjectIndex(int x, int y, int z, CallbackInfoReturnable<Integer> cir) {
         if (!SimulatiMod.getConfig().world.generation.useVanillaAquiferSampler) {
             int localX = x - this.startX;
             int localY = y - this.startY;

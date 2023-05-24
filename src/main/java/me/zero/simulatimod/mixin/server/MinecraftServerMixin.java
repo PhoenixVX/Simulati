@@ -16,7 +16,7 @@ public class MinecraftServerMixin {
     public static int MAX_WORLD_BORDER_RADIUS = Integer.MAX_VALUE - 16;
 
     @ModifyConstant(method = "getMaxWorldBorderRadius", constant = @Constant(intValue = 29999984))
-    public int simulatiMod$modifyConstantGetMaxWorldBorderRadius(int original) {
+    public int modifyConstantGetMaxWorldBorderRadius(int original) {
         return MAX_WORLD_BORDER_RADIUS;
     }
 }

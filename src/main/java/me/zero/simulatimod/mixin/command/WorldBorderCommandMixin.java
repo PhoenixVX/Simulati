@@ -21,22 +21,22 @@ public class WorldBorderCommandMixin {
     private static final SimpleCommandExceptionType SET_FAILED_FAR_EXCEPTION = new SimpleCommandExceptionType(Text.translatable("commands.worldborder.set.failed.far", Integer.MAX_VALUE - 16));
 
     @ModifyConstant(method = "register", constant = @Constant(doubleValue = -5.9999968E7))
-    private static double simulatiMod$modifyConstantRegisterNegative(double original) {
+    private static double modifyConstantRegisterNegative(double original) {
         return -SimulatiMod.getConfig().commands.worldBorderCommand.maximumSize;
     }
 
     @ModifyConstant(method = "register", constant = @Constant(doubleValue = 5.9999968E7))
-    private static double simulatiMod$modifyConstantRegisterPositive(double original) {
+    private static double modifyConstantRegisterPositive(double original) {
         return SimulatiMod.getConfig().commands.worldBorderCommand.maximumSize;
     }
 
     @ModifyConstant(method = "executeSet", constant = @Constant(doubleValue = 5.9999968E7))
-    private static double simulatiMod$modifyConstantExecuteSet(double original) {
+    private static double modifyConstantExecuteSet(double original) {
         return SimulatiMod.getConfig().commands.worldBorderCommand.maximumSize;
     }
 
     @ModifyConstant(method = "executeCenter", constant = @Constant(doubleValue = 2.9999984E7))
-    private static double simulatiMod$modifyConstantExecuteCenter(double original) {
+    private static double modifyConstantExecuteCenter(double original) {
         return SimulatiMod.getConfig().commands.worldBorderCommand.maximumCenterSize;
     }
 }

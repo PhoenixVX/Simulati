@@ -8,12 +8,12 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin {
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = -2.9999999E7))
-    public double simulatiMod$modifyConstantTickNegative(double original) {
+    public double modifyConstantTickNegative(double original) {
         return Long.MIN_VALUE;
     }
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 2.9999999E7))
-    public double simulatiMod$modifyConstantTickPositive(double original) {
+    public double modifyConstantTickPositive(double original) {
         return Long.MAX_VALUE;
     }
 }
