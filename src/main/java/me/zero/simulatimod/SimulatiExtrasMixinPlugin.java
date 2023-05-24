@@ -8,39 +8,39 @@ import java.util.List;
 import java.util.Set;
 
 public class SimulatiExtrasMixinPlugin implements IMixinConfigPlugin {
-    @Override
-    public void onLoad(String mixinPackage) {
-    }
+	@Override
+	public void onLoad(String mixinPackage) {
+	}
 
-    @Override
-    public String getRefMapperConfig() {
-        return null;
-    }
+	@Override
+	public String getRefMapperConfig() {
+		return null;
+	}
 
-    @Override
-    public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.contains("extramixins.floats")) {
-            return SimulatiMod.getConfig().extras.fixDoubleFloatCasts;
-        } else {
-            return true;
-        }
-    }
+	@Override
+	public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+		if (mixinClassName.contains("extramixins.floats")) {
+			return SimulatiMod.getConfig().extras.fixDoubleFloatCasts;
+		} else {
+			return true;
+		}
+	}
 
-    @Override
-    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
-    }
+	@Override
+	public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
+	}
 
-    @Override
-    public List<String> getMixins() {
-        return List.of();
-    }
+	@Override
+	public List<String> getMixins() {
+		return List.of();
+	}
 
-    @Override
-    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-    }
+	@Override
+	public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+	}
 
-    @Override
-    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-        // Handle float casting
-    }
+	@Override
+	public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
+		// Handle float casting
+	}
 }

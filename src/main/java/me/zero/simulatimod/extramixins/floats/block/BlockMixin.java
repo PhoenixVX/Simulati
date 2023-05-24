@@ -1,7 +1,8 @@
 package me.zero.simulatimod.extramixins.floats.block;
 
-import net.minecraft.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
+
+import net.minecraft.block.Block;
 
 // Dummy mixin
 @Mixin(Block.class)
